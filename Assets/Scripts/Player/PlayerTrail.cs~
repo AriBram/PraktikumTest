@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerTrail : MonoBehaviour
+{
+    public GameObject trailObject;
+
+    public float spawnTime;
+    private float spawnTimer;
+
+    void Start()
+    {
+        
+    }
+    
+    void Update()
+    {
+        if(spawnTimer <= 0)
+        {
+            Instantiate(trailObject, transform.position, Quaternion.identity);
+            spawnTimer = spawnTime;
+        }
+        else
+        {
+            spawnTimer -= Time.deltaTime;
+        }
+    }
+}

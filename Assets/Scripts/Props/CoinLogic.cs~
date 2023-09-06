@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CoinLogic : MonoBehaviour
+{
+    Transform target;
+
+    private void Update()
+    {
+        if (target)
+            MoveToTarget();
+    }
+
+    private void MoveToTarget()
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            target = collision.transform;
+    }
+}

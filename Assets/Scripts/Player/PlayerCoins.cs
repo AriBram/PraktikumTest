@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCoins : MonoBehaviour
+{
+    public CoinCounter counter;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Coin"))
+        {
+            counter.AddCoin();
+            Destroy(collision.collider.gameObject);
+        }
+            
+    }
+}

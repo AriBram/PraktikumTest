@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerHealth : MonoBehaviour
+{
+    public LevelManager manager;
+
+
+    public void GetHit()
+    {
+        manager.Reload();
+    }
+}

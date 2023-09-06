@@ -1,0 +1,52 @@
+using UnityEngine;
+
+public class ObstacleSpawner : MonoBehaviour
+{
+    public GameObject[] obstaclePrefabs; 
+    public Transform player;
+
+    public float minSpawnInterval = 0.1f;
+    public float maxSpawnInterval = 2.0f;
+
+    public float minHeight = -3.0f;
+    public float maxHeight = 3.0f;
+    public float spawnDistance = 10.0f;
+
+    private float spawnInterval;
+
+    private void Start()
+    {
+        spawnInterval = GetRandomInterval();
+    }
+
+    private void Update()
+    {
+
+        spawnInterval -= Time.deltaTime;
+
+        if (spawnInterval <= 0)
+        {
+            SpawnObstacle();
+            spawnInterval = GetRandomInterval();
+        }
+    }
+
+    private float GetRandomInterval()
+    {
+        float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
+        return interval;
+    }
+
+    private void SpawnObstacle()
+    {
+        GameObject randomObstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+
+        float randomHeight = Random.Range(minHeight, maxHeight);
+
+        // ????????? ??????? ??? ??????
+        Vector3 spawnPosition = new Vector3(player.position.x + spawnDistance, randomHeight, 0.0f);
+
+        // ??????? ???????????
+        Instantiate(randomObstaclePrefab, spawnPosition, Quaternion.identity);
+    }
+}

@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelManager : MonoBehaviour
+{
+    bool isPlay;
+
+    void Start()
+    {
+        isPlay = false;
+        Time.timeScale = 0f;
+    }
+
+    void Update()
+    {
+        if (!isPlay && Input.GetKeyDown(KeyCode.Space))
+            StartGame();
+    }
+
+    public void StartGame()
+    {
+        isPlay = true;
+        Time.timeScale = 1f;
+    }
+
+    public void Reload() => SceneManager.LoadScene(GetScene());
+
+    public int GetScene() => SceneManager.GetActiveScene().buildIndex;
+}
