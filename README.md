@@ -1,5 +1,5 @@
 # PraktikumTest
  Simple game, test task for YandexPraktikum
 
-# Test build
+## Test build
 https://kerioth.itch.io/praktikumtest
